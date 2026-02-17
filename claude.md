@@ -25,53 +25,71 @@ RetailIT NYC is a retail IT consulting firm based in New York City. The company 
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router) with TypeScript
+- **Framework:** Next.js 16 (App Router) with TypeScript
 - **Styling:** Tailwind CSS 4
-- **Fonts:** Inter (self-hosted via next/font)
+- **Fonts:** Playfair Display (serif, headings) + DM Sans (sans-serif, body) via next/font
 - **Analytics:** Google Analytics 4 via Next.js Script
 - **Images:** Optimized via next/image (WebP/AVIF, responsive srcsets)
-- **Deployment:** Static Generation (SSG) for maximum performance
+- **Rendering:** Static Generation (SSG) for maximum performance
 
-## Design Tokens
+## Design Direction: Luxury / Refined
+
+**Aesthetic:** Dark-dominant palette with warm gold accents. Classical serif authority meets modern sans clarity. Think: a high-end consulting firm's office at night -- warm lighting, dark wood, gold details.
+
+**Memorable element:** The contrast between a rich, dark atmosphere and crisp gold typography.
 
 ### Colors
-- Primary (Navy): `#0F172A`
-- Accent (Blue): `#3B82F6`
-- Accent Hover: `#2563EB`
-- Secondary Accent (Emerald): `#10B981`
-- Background: `#FFFFFF`
-- Background Alt: `#F8FAFC`
-- Text Primary: `#0F172A`
-- Text Secondary: `#475569`
-- Text Muted: `#94A3B8`
-- Border: `#E2E8F0`
+- Background Primary (Rich Black): `#0A0A0B`
+- Background Elevated (Charcoal): `#141416`
+- Background Subtle: `#1C1C1F`
+- Gold Accent: `#C9A84C`
+- Gold Light (hover): `#E8D48B`
+- Gold Muted: `rgba(201, 168, 76, 0.2)`
+- Text Primary (Warm White): `#F5F0E8`
+- Text Secondary (Warm Gray): `#9A958A`
+- Text Tertiary (Dim): `#5C5850`
+- Border: `#2A2A2E`
+- Border Gold: `rgba(201, 168, 76, 0.3)`
 
 ### Typography
-- Font Family: Inter
-- Headings: 700-800 weight
-- Body: 400-500 weight
+- **Display/Headings:** Playfair Display (serif, 400/700 weight)
+- **Body:** DM Sans (sans-serif, 400/500/700 weight)
+
+### Atmosphere
+- Subtle noise/grain texture overlay on body (2.5% opacity) for analog warmth
+- Radial gold glows behind key content at very low opacity
+- Geometric grid pattern in Contact section background
+- Gold gradient dividers (fade from transparent via gold to transparent)
+
+### Motion
+- Hero entrance: staggered CSS fadeUp animations (150ms delays)
+- Gold decorative line: expandFromCenter keyframe
+- Scroll reveals: 16px translateY, 0.8s duration, IntersectionObserver
+- Hover states: 500ms transitions, gold border glow on cards
+- No bouncy or playful animations -- deliberate and slow
 
 ## Project Structure
 
 ```
 app/
-  layout.tsx          # Root layout with metadata, fonts, analytics
+  layout.tsx          # Root layout -- fonts, metadata, skip link, analytics
   page.tsx            # Home page (SSG)
-  globals.css         # Tailwind imports + custom styles
+  globals.css         # Tailwind theme, colors, noise texture, keyframes
   sitemap.ts          # Dynamic sitemap generation
   robots.ts           # robots.txt configuration
 components/
-  Header.tsx          # Responsive nav with mobile menu (client component)
-  Footer.tsx          # Site footer (server component)
-  Hero.tsx            # Hero section (server component)
-  Services.tsx        # Service cards (server component)
-  Differentiators.tsx # Why choose us section (server component)
-  Contact.tsx         # Contact CTA section (server component)
+  Header.tsx          # Responsive nav, transparent-to-dark scroll (client)
+  Hero.tsx            # Hero with NYC background, serif headline, gold accents
+  Services.tsx        # 3 dark cards with gold icons and hover glow
+  Differentiators.tsx # Alternating image/text with gold step numbers
+  Contact.tsx         # CTA with geometric grid, gold trust signals
+  Footer.tsx          # Dark footer with border separation
+  Analytics.tsx       # GA4 script loader
+  ScrollAnimations.tsx# IntersectionObserver scroll animations (client)
 lib/
-  metadata.ts         # Shared SEO metadata configuration
-  structured-data.ts  # JSON-LD schema definitions
+  structured-data.ts  # JSON-LD schemas (Organization, ProfessionalService)
 public/
-  images/             # Optimized image assets
+  images/             # Optimized image assets, OG image
 ```
 
 ## Conventions
@@ -81,15 +99,18 @@ public/
 - Use semantic HTML elements (section, article, nav, header, footer, main).
 - All images must have descriptive alt text.
 - Follow mobile-first responsive design.
-- Tailwind classes ordered: layout > sizing > spacing > typography > colors > effects.
-- No inline styles; all styling through Tailwind utility classes.
+- Use `font-display` class for headings, default `font-body` for everything else.
+- Headings: `font-bold` for h1/h2, `font-semibold` for h3.
+- Gold accent for eyebrow text, decorative lines, icons, and interactive elements.
+- Warm white (`text-warm-white`) for primary text, warm gray (`text-warm-gray`) for body.
 - Performance budget: LCP < 2.5s, CLS < 0.1, FID < 100ms.
 
 ## SEO Requirements
 
 - Unique, descriptive title and meta description.
-- Open Graph and Twitter Card meta tags.
-- JSON-LD structured data (Organization, LocalBusiness, ProfessionalService).
+- Open Graph and Twitter Card meta tags with branded OG image.
+- JSON-LD structured data (Organization, ProfessionalService, WebSite).
 - Auto-generated sitemap.xml and robots.txt.
 - Canonical URLs on all pages.
 - Proper heading hierarchy (single h1 per page).
+- Skip-to-content link for accessibility.

@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 
-const inter = Inter({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-display",
+  weight: ["400", "700"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -41,21 +49,12 @@ export const metadata: Metadata = {
     title: "Retail IT NYC | Retail IT Consulting & Technology Solutions",
     description:
       "Helping retailers develop and implement IT strategies that address today's challenges and tomorrow's opportunities. 25+ years of retail IT experience.",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Retail IT NYC - Retail Technology Consulting",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Retail IT NYC | Retail IT Consulting & Technology Solutions",
     description:
       "Helping retailers develop and implement IT strategies that address today's challenges and tomorrow's opportunities.",
-    images: ["/images/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -79,14 +78,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-void text-stone">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-gold focus:text-void focus:rounded-lg focus:font-medium"
+        >
+          Skip to main content
+        </a>
         <Analytics />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

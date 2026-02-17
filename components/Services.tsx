@@ -5,7 +5,7 @@ const services = [
       "With over 25 years of retail IT experience, we consult our clients across all functions in their ever-expanding ecosystems — commerce strategy, supply chain, wholesale, ecommerce, and brick & mortar.",
     icon: (
       <svg
-        className="w-8 h-8"
+        className="w-7 h-7"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -25,7 +25,7 @@ const services = [
       "We help organizations maximize value from their technology investments by providing custom development services, tailoring integrations between systems to your specific business cases.",
     icon: (
       <svg
-        className="w-8 h-8"
+        className="w-7 h-7"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -45,7 +45,7 @@ const services = [
       "We understand how critical it is to keep revenue-driving systems running 24/7. We provide support for POS, e-commerce, order management, and CRM systems, to name a few.",
     icon: (
       <svg
-        className="w-8 h-8"
+        className="w-7 h-7"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -63,44 +63,44 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 md:py-24 bg-white">
+    <section id="services" className="py-20 md:py-32 bg-void">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section header */}
-        <div className="animate-on-scroll max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <p className="text-sm font-semibold tracking-wide uppercase text-accent mb-3">
+        <div className="animate-on-scroll max-w-3xl mx-auto text-center mb-16 md:mb-20">
+          <p className="text-xs font-medium tracking-[0.25em] uppercase text-gold mb-4">
             What We Do
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-navy mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-cream mb-5">
             Experts in Commerce
           </h2>
-          <p className="text-lg text-slate-500 leading-relaxed">
+          <p className="text-lg text-stone leading-relaxed">
             We simplify selling across all channels — brick &amp; mortar,
             online, and wholesale — so you can focus on what you do best.
           </p>
         </div>
 
         {/* Service cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`animate-on-scroll delay-${(index + 1) * 100} group relative bg-slate-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 border border-transparent hover:border-slate-200`}
+              className={`animate-on-scroll delay-${(index + 1) * 100} group relative bg-elevated rounded-lg p-8 md:p-10 border border-edge hover:border-edge-gold transition-all duration-500 hover:shadow-[0_0_30px_rgba(201,168,76,0.06)]`}
             >
+              {/* Gold top accent */}
+              <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent group-hover:via-gold/60 transition-all duration-500" />
+
               {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-6 mx-auto group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+              <div className="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center mb-8 mx-auto">
                 {service.icon}
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-navy mb-3 text-center">
+              <h3 className="font-display text-xl font-bold text-cream mb-3 text-center">
                 {service.title}
               </h3>
-              <p className="text-slate-500 leading-relaxed text-center">
+              <p className="text-stone leading-relaxed text-center text-[15px]">
                 {service.description}
               </p>
-
-              {/* Hover accent line */}
-              <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
             </div>
           ))}
         </div>
