@@ -31,8 +31,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-void border-b border-edge"
-          : "bg-gradient-to-b from-void/80 to-transparent"
+          ? "bg-[#0A0A0B] shadow-[0_1px_0_rgba(42,42,46,1)]"
+          : "bg-gradient-to-b from-[#0A0A0B]/80 to-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
