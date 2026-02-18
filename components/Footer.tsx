@@ -32,9 +32,9 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-dimmed mb-5">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-dimmed mb-5">
                 Quick Links
-              </h4>
+              </p>
               <ul className="space-y-3">
                 <li>
                   <Link
@@ -65,9 +65,9 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-dimmed mb-5">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-dimmed mb-5">
                 Contact
-              </h4>
+              </p>
               <ul className="space-y-3">
                 <li>
                   <a

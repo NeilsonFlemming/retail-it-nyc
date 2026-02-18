@@ -11,6 +11,7 @@ export default function Hero() {
           fill
           className="object-cover object-center"
           priority
+          fetchPriority="high"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,11,0.65)] via-[rgba(10,10,11,0.78)] to-[#0A0A0B]" />
